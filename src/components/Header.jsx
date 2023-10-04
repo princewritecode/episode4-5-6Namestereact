@@ -1,4 +1,11 @@
+import { useState, useEffect } from "react";
 const Header = () => {
+
+    const [logButton, setLogButton] = useState("Login");
+
+    //** If no dependency array => useeffect is called on every render */
+    //** if dependency array is empty = [] => useEffect is called on initial render and just once when component is rendered first time */
+
 
     return (
         <div className="header">
@@ -11,9 +18,12 @@ const Header = () => {
                     <li>Home</li>
                     <li>Contact</li>
                     <li>About us</li>
+                    <button onClick={() => {
+                        logButton === "Login" ? setLogButton("Logout") : setLogButton("Login");
+                    }}> {logButton} </button>
                 </ul>
             </div>
-        </div>
+        </div >
     );
 
 };
