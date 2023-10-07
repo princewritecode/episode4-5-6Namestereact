@@ -1,8 +1,8 @@
 import { restaurantList } from "../../utils/constants/constant";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 const Body = () => {
-
     const [listOfrestaurant, setListOfRestaurant] = useState([]);
     const [newListOfRestaurant, setNewListOfRestaurant] = useState([]);
     const [searchText, setSearchText] = useState("");
@@ -13,11 +13,7 @@ const Body = () => {
         setListOfRestaurant(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setNewListOfRestaurant(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
-
     useEffect(() => { fetchData(); }, []);
-
-
-
     return (
         <>
             <div className="search-container" >
@@ -30,26 +26,21 @@ const Body = () => {
                             return res.info.name.toLowerCase().includes(searchText.toLowerCase());
                         });
                         setNewListOfRestaurant(filteredRestaurant);
-
                     }}>
                     Search
                 </button>
             </div>
-
             <div className="toprated-restaurant">
-
                 <button className="toprated-btn" onClick={() => {
                     const filteredList = listOfrestaurant.filter((restaurant) => {
                         return restaurant.info.avgRating > 4;
                     });
                     setListOfRestaurant(filteredList);
                 }}>Toprated Restaurant</button>
-
             </div>
-
             <div className="rescard-container">
                 {newListOfRestaurant.map((restaurant) => {
-                    return < RestaurantCard key={restaurant.info.id} {...restaurant.info} />;
+                    return <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}> < RestaurantCard key={restaurant.info.id} {...restaurant.info} /></Link>;
                 })
                 }
             </div>
