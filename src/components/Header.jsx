@@ -24,6 +24,7 @@ const Header = () => {
                     <li><Link to="/">Home</Link></li>
                     <li> <Link to="/contact"> Contact </Link></li>
                     <li><Link to="/about">About us</Link></li>
+                    <li> <Link to="/grocery"> Grocery </Link></li>
                     <button onClick={() => {
                         logButton === "Login" ? setLogButton("Logout") : setLogButton("Login");
                     }}> {logButton} </button>
