@@ -2,6 +2,7 @@ import { restaurantList } from "../../utils/constants/constant";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 const Body = () => {
     const [listOfrestaurant, setListOfRestaurant] = useState([]);
     const [newListOfRestaurant, setNewListOfRestaurant] = useState([]);
@@ -14,6 +15,10 @@ const Body = () => {
         setNewListOfRestaurant(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
     useEffect(() => { fetchData(); }, []);
+    const onlineStatus = useOnlineStatus();
+    if (onlineStatus === false) {
+        return <h1>Looks like you're offline !! please check your internet connection</h1>;
+    }
     return (
         <>
             <div className="search-container" >
