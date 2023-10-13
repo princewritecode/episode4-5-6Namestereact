@@ -1,4 +1,3 @@
-import { restaurantList } from "../../utils/constants/constant";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";

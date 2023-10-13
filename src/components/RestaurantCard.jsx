@@ -1,4 +1,4 @@
-import { image_url } from "../../utils/constants/constant";
+import { image_url } from "../../utils/constant.js";
 const RestaurantCard = ({ name, cuisines, avgRating, cloudinaryImageId }) => {
     console.log();
     return (
