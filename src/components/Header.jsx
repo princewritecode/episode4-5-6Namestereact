@@ -6,14 +6,13 @@ const Header = () => {
     const onlineStatus = useOnlineStatus();
     //** If no dependency array => useeffect is called on every render */
     //** if dependency array is empty = [] => useEffect is called on initial render and just once when component is rendered first time */
-
     return (
-        <div className="header">
+        <div className="flex justify-between shadow-xl ">
             <div className="logo-container">
-                <Link to="/"> <img className="logo" src="https://cdn.dribbble.com/users/1635051/screenshots/4291569/socio_curry_logo-01.png"></img></Link>
+                <Link to="/"> <img className="w-56" src="https://cdn.dribbble.com/users/1635051/screenshots/4291569/socio_curry_logo-01.png"></img></Link>
             </div>
-            <div className="nav-items">
-                <ul>
+            <div className="nav-items flex items-center">
+                <ul className="flex gap-4 p-4 m-4">
                     <li>Online Status:{
                         onlineStatus ? '🟢' : '🔴'
                     }</li>
